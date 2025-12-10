@@ -63,7 +63,11 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/home2").hasRole("USER")
-                        .requestMatchers("/", "/login/oauth2/**").permitAll()
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()       .requestMatchers("/", "/login/oauth2/**").permitAll()
                         .anyRequest().authenticated()
                 )
 
